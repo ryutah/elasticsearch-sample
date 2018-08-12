@@ -65,7 +65,7 @@ spec:
     app: elasticsearch
   ports:
   - name: core
-    port: 80
+    port: 9200
     targetPort: 9200
 
 ---
