@@ -11,3 +11,9 @@ help: ## Print this help
 build: ## Build containers
 	docker build -t ryutah/elasticsearch -f Dockerfile.elasticsearch .
 	docker build -t ryutah/kibana -f Dockerfile.kibana .
+
+loads_accounts_dataset: ## Loading sample dataset of account
+	curl -X POST \
+	  -H "Content-Type: application/json" \
+	  --data-binary "@dataset/accounts.json" \
+	  "http://${ELASTIC_SEARCH_HOST}/bank/_doc/_bulk?pretty&refresh"
